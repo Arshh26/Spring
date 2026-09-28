@@ -1,22 +1,30 @@
-import Pojo.Car;
-import Pojo.Engine;
-import Pojo.Person;
-//import Pojo.Principal;
+import Pojo2.Teacher;
+import config1.MyConfig;
+import Pojo1.Person;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Driver {
+
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-        Person person = context.getBean(Person.class);
-        Car car = context.getBean(Car.class);
-        Engine engine = context.getBean(Engine.class);
+
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext(MyConfig.class);
+
+        Teacher teacher = context.getBean(Teacher.class);
+        Teacher teacher1 = context.getBean(Teacher.class);
+
+        System.out.println(teacher);
+        System.out.println(teacher1);
+
+        teacher.teach();
 
 
+        System.out.println(teacher == teacher1);
 
-        person.walk();
-        car.drive();
-        engine.Start();
-//        principal.teach();
+
+//        Person person = context.getBean(Person.class);
+//
+//        person.travel();
     }
 }
